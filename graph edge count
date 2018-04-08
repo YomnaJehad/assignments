@@ -1,0 +1,72 @@
+#include <iostream>
+#include <list>
+#include <map>
+#include <fstream>
+#include <string>
+#include <algorithm>
+#include <iterator>
+#include <vector>
+#include <queue>
+using namespace std;
+
+int main(){
+
+  ifstream in("C:\\Users\\Yomna Jehad\\Desktop\\graph.txt");
+  cin.rdbuf(in.rdbuf());
+  int noVer=0, noEdge=0;
+  cin>>noVer>>noEdge;
+  cout<<"noVer"<<noVer<<"\t noEdge"<<noEdge<<endl<<endl;
+    vector <vector<int> > mat(noVer, vector<int>(noVer, 0));
+
+  vector<int> edgCol(noEdge),verCol(noEdge);
+  while(!cin.fail()){
+
+    int one,two;
+
+    cin>>one>>two;
+    one--; two--;
+    mat[one][two]=1;
+    mat[two][one]=1;
+  }
+  ofstream out("C:\\Users\\Yomna Jehad\\Desktop\\tomodachi.txt");
+  out.open("C:\\Users\\Yomna Jehad\\Desktop\\tomodachi.txt");
+  for(int i=0; i<noVer ;i++){
+
+    cout<<i+1<<"  ";
+    out<<i+1<<"  ";
+    int count=0;
+    for(int j=0; j<noVer; j++){
+        if(mat[i][j]==1) count++;
+    }
+    cout<<count<<endl;
+    out<<count<<endl;
+  }
+  out.close();
+
+/*
+
+  for (int i=0; i<noEdge  ;i++){
+
+    cin>>verCol[i];
+  //  cout<<verCol[i]<<"\t";
+    cin>>edgCol[i];
+//    cout<<edgCol[i]<<endl;
+
+  }*/
+ /*
+  for(int i=0; i<noVer;i++){
+        for(int j=0; j<noVer;j++)
+    cout<<mat[i][j]<<"\t";
+  cout<<endl;
+  }
+*/
+/*
+for(int i=0; i<verCol.size(); i++){
+
+    mat[--verCol[i]][--edgCol[i]]=1;
+}
+*/
+
+
+    return 0;
+}
